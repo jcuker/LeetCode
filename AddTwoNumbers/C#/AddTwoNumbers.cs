@@ -8,6 +8,7 @@ Output: 7 -> 0 -> 8
 */
 
 using System;
+using System.Numerics;
 
 namespace LeetCode
 {
@@ -37,11 +38,10 @@ namespace LeetCode
                 strSecondNum += l2.val.ToString();
                 l2 = l2.next;
             }
+            BigInteger intFirstNumber = BigInteger.Parse(Reverse(strFirstNum));
+            BigInteger intSecondNumber = BigInteger.Parse(Reverse(strSecondNum));
 
-            int intFirstNumber = int.Parse(Reverse(strFirstNum));
-            int intSecondNumber = int.Parse(Reverse(strSecondNum));
-
-            int intSum = intFirstNumber + intSecondNumber;
+            BigInteger intSum = intFirstNumber + intSecondNumber;
 
             ListNode returnValue = BuildListNode(intSum);
             return returnValue;
@@ -54,7 +54,7 @@ namespace LeetCode
             return new string(charArray);
         }
 
-        public static ListNode BuildListNode(int intSum)
+        public static ListNode BuildListNode(BigInteger intSum)
         {
             String strSumReversed = Reverse(intSum.ToString());
 
@@ -88,11 +88,10 @@ namespace LeetCode
             ListNode secondList = new ListNode(5);
             temp = new ListNode(6);
             secondList.next = temp;
-            
+
             cursor = temp;
             temp = new ListNode(4);
-            cursor.next = temp;
-
+        
             ListNode result = AddTwoNumbers(firstList, secondList);
             Console.Write("First List: ");
             PrintList(firstList);
@@ -108,7 +107,7 @@ namespace LeetCode
             {
                 Console.Write(list.val.ToString());
                 list = list.next;
-                if(list != null)
+                if (list != null)
                 {
                     Console.Write(" -> ");
                 }
@@ -117,4 +116,3 @@ namespace LeetCode
             Console.WriteLine("");
         }
     }
-}
